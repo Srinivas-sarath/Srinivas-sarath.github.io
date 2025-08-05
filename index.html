@@ -2,68 +2,95 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SRI INFINITY CONVENTION HALL</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <h1>SRI INFINITY CONVENTION HALL</h1>
-    <p class="tagline">Elegance. Luxury. Memories.</p>
+  <header class="hero">
+    <nav class="navbar">
+      <div class="logo">SRI INFINITY</div>
+      <ul class="nav-links">
+        <li><a href="#about">About Us</a></li>
+        <li class="dropdown">
+          <a href="#">Features ▼</a>
+          <ul class="dropdown-menu">
+            <li><a href="#hall">Main Hall</a></li>
+            <li><a href="#parking">Parking</a></li>
+            <li><a href="#bar">Bar Room</a></li>
+            <li><a href="#dining">Dining</a></li>
+            <li><a href="#banquet">Banquet</a></li>
+          </ul>
+        </li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hero-content">
+      <h1>Welcome to SRI INFINITY CONVENTION HALL</h1>
+      <p>Where grandeur meets hospitality in Manikonda, Hyderabad</p>
+    </div>
   </header>
 
-  <nav>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <section id="about">
-    <h2>Welcome to SRI INFINITY</h2>
-    <p>Located in the heart of Manikonda, Hyderabad, our convention hall combines modern architecture with traditional hospitality to create an unforgettable experience for all your events.</p>
+  <section id="about" class="section about">
+    <h2>About Us</h2>
+    <p>
+      Nestled in the heart of Manikonda, Hyderabad, SRI INFINITY is your
+      premier destination for events that leave a lasting impact. Our
+      venue blends architectural elegance, modern amenities, and warm
+      hospitality. From weddings and corporate galas to banquets and
+      parties—we curate unforgettable experiences.
+    </p>
   </section>
 
-  <section id="services">
-    <h2>Our Services</h2>
-    <div class="services">
-      <div class="card">
-        <h3>Banquet Hall</h3>
-        <p>Perfect for weddings, receptions, and grand gatherings with capacity up to 1000 guests.</p>
-      </div>
-      <div class="card">
-        <h3>Bar Room</h3>
-        <p>Premium bar setup for private parties and celebrations.</p>
-      </div>
-      <div class="card">
-        <h3>Dining</h3>
-        <p>Multi-cuisine dining area suitable for events of all sizes.</p>
-      </div>
-      <div class="card">
-        <h3>Main Mall</h3>
-        <p>A stylish and spacious mall area for exhibitions, fashion shows, and more.</p>
-      </div>
-    </div>
+  <section id="hall" class="section feature">
+    <h2>Main Hall</h2>
+    <p>
+      A vast, luminous space adorned with dramatic lighting—designed to
+      host grand events with ease and style.
+    </p>
   </section>
 
-  <section id="contact">
+  <section id="parking" class="section feature">
+    <h2>Parking</h2>
+    <p>
+      Secure, spacious parking for your guests, ensuring ease and
+      convenience from arrival to departure.
+    </p>
+  </section>
+
+  <section id="bar" class="section feature">
+    <h2>Bar Room</h2>
+    <p>
+      Contemporary and chic, our bar area offers refined drinks and
+      lively ambiance—a perfect gathering between sessions or events.
+    </p>
+  </section>
+
+  <section id="dining" class="section feature">
+    <h2>Dining</h2>
+    <p>
+      Elegant dining tailored to your taste—with menus curated by
+      master chefs to suit any occasion.
+    </p>
+  </section>
+
+  <section id="banquet" class="section feature">
+    <h2>Banquet</h2>
+    <p>
+      Lavish banquet setups that accommodate celebrations of all scales—
+      designed with luxury and comfort in mind.
+    </p>
+  </section>
+
+  <footer class="footer" id="contact">
     <h2>Contact Us</h2>
-    <p>Email: info@infinityhall.com</p>
-    <p>Phone: +91 99999 99999</p>
-    <p>Address: Manikonda, Hyderabad</p>
-  </section>
-
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/916281474533" class="whatsapp-fab" target="_blank" aria-label="Chat on WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 32 32" fill="#fff">
-      <path d="M16 0C7.164 0 0 7.164 0 16a15.88 15.88 0 002.308 8.319L0 32l7.925-2.27A15.94 15.94 0 0016 32c8.837 0 16-7.164 16-16S24.837 0 16 0zm0 29.402a13.332 13.332 0 01-6.823-1.874l-.491-.292-4.704 1.346 1.401-4.59-.316-.507a13.33 13.33 0 01-2.07-7.156c0-7.362 5.995-13.357 13.357-13.357 7.363 0 13.358 5.995 13.358 13.357 0 7.363-5.995 13.357-13.358 13.357zm7.667-9.654c-.413-.206-2.445-1.21-2.826-1.347-.381-.139-.658-.206-.934.206s-1.073 1.347-1.316 1.62c-.242.276-.483.31-.896.104-.413-.207-1.743-.642-3.32-2.05-1.228-1.095-2.056-2.447-2.298-2.86-.241-.414-.027-.637.18-.843.185-.185.414-.483.621-.724.206-.242.276-.414.414-.689.138-.275.069-.517-.035-.724-.103-.206-.896-2.157-1.23-2.957-.324-.777-.655-.672-.896-.683h-.77c-.242 0-.62.138-.896.414-.275.275-1.05 1.024-1.05 2.5s1.076 2.895 1.226 3.1c.15.207 2.12 3.238 5.14 4.544.719.31 1.28.495 1.718.633.722.23 1.38.198 1.898.12.579-.086 1.745-.712 1.993-1.4.249-.69.249-1.282.173-1.4-.07-.12-.24-.19-.5-.31z" />
-    </svg>
-  </a>
-
-  <footer>
-    <p>&copy; 2025 SRI INFINITY CONVENTION HALL. All rights reserved.</p>
+    <p>Address: Manikonda, Hyderabad, India</p>
+    <p>Phone: +91‑XXXXXXXXXX | Email: info@sri‑infinity.com</p>
+    <p>© 2025 SRI INFINITY CONVENTION HALL</p>
   </footer>
+
+  <!-- Chat Now Sticky Button -->
+  <button id="chatButton">💬 Chat Now</button>
 
   <script src="script.js"></script>
 </body>
