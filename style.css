@@ -2,99 +2,141 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+body, html { font-family: 'Segoe UI', sans-serif; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
 
-body {
-  background-color: #f5f5f5;
-  color: #333;
-  line-height: 1.6;
-}
-
-header {
-  background: linear-gradient(to right, #4b0082, #8a2be2);
-  color: #fff;
-  padding: 2rem 1rem;
-  text-align: center;
-}
-
-.tagline {
-  font-style: italic;
-  font-size: 1.2rem;
-}
-
-nav {
-  background: #333;
-  padding: 1rem;
-  text-align: center;
-}
-
-nav ul {
-  list-style: none;
+/* Hero section */
+.hero {
+  height: 100vh;
+  background: url('hero.jpg') center/cover no-repeat;
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-nav li {
-  margin: 0 15px;
-}
-
-nav a {
+  flex-direction: column;
+  justify-content: space-between;
   color: white;
-  text-decoration: none;
-  font-weight: bold;
+  position: relative;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: rgba(0,0,0,0.6);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.logo { font-size: 1.8rem; font-weight: bold; }
+.nav-links {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+.nav-links li { margin-left: 2rem; position: relative; }
+.nav-links a {
+  color: white;
+  padding: 0.5rem 0.7rem;
+  transition: background 0.3s, color 0.3s;
+}
+.nav-links a:hover { background: rgba(255,255,255,0.3); border-radius: 4px; }
+
+/* Dropdown menu */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background: rgba(0,0,0,0.8);
+  top: 100%;
+  left: 0;
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+  border-radius: 4px;
+}
+.dropdown:hover .dropdown-menu { display: block; }
+.dropdown-menu li {
+  margin: 0;
+}
+.dropdown-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
 }
 
-nav a:hover {
-  color: #ffd700;
-}
-
-section {
-  padding: 2rem;
-  max-width: 1200px;
+/* Hero content */
+.hero-content {
   margin: auto;
-}
-
-.services {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
-
-.card {
-  background-color: white;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-footer {
-  background: #222;
-  color: white;
   text-align: center;
-  padding: 1rem;
+  transform: translateY(-10%);
+}
+.hero-content h1 {
+  font-size: 3rem;
+  text-shadow: 0 0 10px rgba(0,0,0,0.7);
+  animation: fadeInDown 1s ease-out forwards;
+  opacity: 0;
+}
+.hero-content p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  animation: fadeInUp 1s ease-out 0.8s forwards;
+  opacity: 0;
+}
+@keyframes fadeInDown {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Floating WhatsApp FAB */
-.whatsapp-fab {
+/* Sections */
+.section { padding: 4rem 1.5rem; background: #f9f9f9; }
+.section:nth-child(even) { background: #fff; }
+.section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+  position: relative;
+}
+.section h2::after {
+  content: '';
+  width: 60px;
+  height: 4px;
+  background: #ff6600;
+  display: block;
+  margin-top: 0.5rem;
+}
+.section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Footer */
+.footer {
+  background: #333;
+  color: #eee;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+/* Chat Now Button */
+#chatButton {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #25d366;
-  border-radius: 50%;
-  padding: 14px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s ease-in-out;
-  text-decoration: none;
+  background: #ff6600;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  animation: pulse 2s infinite;
+  z-index: 100;
 }
-
-.whatsapp-fab:hover {
-  transform: scale(1.1);
-  background-color: #1ebe5d;
+#chatButton:hover {
+  background: #e65500;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
