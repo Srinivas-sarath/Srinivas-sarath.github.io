@@ -3,127 +3,548 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SRI INFINITY CONVENTION HALL</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Sri Infinity Convention Hall - Manikonda, Hyderabad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Basic Setup */
+        :root {
+            --gold: #D4AF37;
+            --dark-bg: #121212;
+            --secondary-dark: #1a1a1a;
+            --text-light: #f0f0f0;
+            --text-medium: #a0a0a0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Utility Class for Scroll Animation */
+        .hidden {
+            opacity: 0;
+            filter: blur(5px);
+            transform: translateX(-100%);
+            transition: all 1s;
+        }
+        
+        .show {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateX(0);
+        }
+
+        /* --- Header & Navigation --- */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 5%;
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: background 0.3s ease;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 700;
+            animation: fadeIn 2s;
+        }
+
+        .navbar a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 35px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--gold);
+            transition: width 0.4s ease;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            color: var(--gold);
+        }
+
+        .navbar a:hover::after {
+            width: 100%;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--secondary-dark);
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            z-index: 1;
+            border-radius: 5px;
+            overflow: hidden;
+            animation: slideInDown 0.5s ease forwards;
+        }
+
+        .dropdown-content a {
+            color: var(--text-light);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            margin-left: 0; /* Reset margin for dropdown items */
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--gold);
+            color: var(--dark-bg);
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1542665952-145c2dbd72c0?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            filter: brightness(0.4);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+            padding: 20px;
+        }
+        
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+            font-weight: 400;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero-content h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            margin: 10px 0 20px;
+            font-weight: 700;
+            line-height: 1.2;
+            animation: slideInUp 1.2s ease-out;
+        }
+
+        .hero-content .address {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            animation: slideInUp 1.4s ease-out;
+        }
+
+        /* --- Section Styling --- */
+        .section {
+            padding: 80px 5%;
+            background-color: var(--dark-bg);
+        }
+
+        .section:nth-of-type(odd) {
+            background-color: var(--secondary-dark);
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            color: var(--gold);
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            margin: 15px auto 0;
+        }
+
+        /* --- About Us Section --- */
+        #about {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+            transition: transform 0.5s ease;
+        }
+        .about-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .about-content {
+            flex: 1.2;
+            min-width: 300px;
+        }
+
+        .about-content h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .about-content p {
+            font-size: 1rem;
+            color: var(--text-medium);
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* --- Features Section --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--secondary-dark);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .feature-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .feature-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin: 20px 0 10px;
+            color: var(--gold);
+        }
+
+        .feature-card p {
+            padding: 0 20px 20px;
+            color: var(--text-medium);
+            font-size: 0.9rem;
+        }
+
+        /* --- Gallery Section --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(1.1);
+        }
+        
+        /* --- Footer --- */
+        .footer {
+            background: #000;
+            padding: 50px 5%;
+            text-align: center;
+            color: var(--text-medium);
+        }
+        
+        .footer-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+        
+        .footer p {
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .footer .copyright {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            border-top: 1px solid #222;
+            padding-top: 20px;
+        }
+
+        /* --- Sticky Chat Button --- */
+        .chat-sticky-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--gold);
+            color: var(--dark-bg);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+            cursor: pointer;
+            z-index: 999;
+            transition: transform 0.3s ease, background-color 0.3s;
+        }
+        
+        .chat-sticky-button:hover {
+            transform: scale(1.1);
+            background-color: #ffdf70;
+        }
+
+        .chat-sticky-button svg {
+            width: 32px;
+            height: 32px;
+        }
+        
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .logo { font-size: 1.5rem; }
+            .navbar { display: none; /* Simple hiding for demo; a hamburger menu is a better practice */ }
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-content .subtitle { font-size: 1.2rem; }
+            .section-title { font-size: 2.2rem; }
+            #about { flex-direction: column; }
+            .chat-sticky-button { width: 50px; height: 50px; bottom: 20px; right: 20px;}
+            .chat-sticky-button svg { width: 28px; height: 28px;}
+        }
+
+    </style>
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <a href="#" class="logo">SRI INFINITY</a>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li class="dropdown">
-                        <a href="#features" class="dropbtn">Features</a>
-                        <div class="dropdown-content">
-                            <a href="#main-hall">Main Hall</a>
-                            <a href="#parking">Parking</a>
-                            <a href="#bar-room">Bar Room</a>
-                            <a href="#dining">Dining</a>
-                            <a href="#banquet">Banquet</a>
-                        </div>
-                    </li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+    <header class="header">
+        <a href="#" class="logo">SRI INFINITY</a>
+        <nav class="navbar">
+            <a href="#hero" class="active">Home</a>
+            <a href="#about">About Us</a>
+            <div class="dropdown">
+                <a href="#features" class="dropbtn">Features</a>
+                <div class="dropdown-content">
+                    <a href="#feature-main-hall">Main Hall</a>
+                    <a href="#feature-parking">Parking</a>
+                    <a href="#feature-bar">Bar Room</a>
+                    <a href="#feature-dining">Dining</a>
+                    <a href="#feature-banquet">Banquet</a>
+                </div>
+            </div>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </header>
 
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>SRI INFINITY CONVENTION HALL</h1>
-                <p>Experience elegance, impeccable service, and unforgettable moments.</p>
-                <a href="#contact" class="cta-button">Book Your Event Now</a>
-            </div>
-        </section>
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <p class="subtitle">EXPERIENCE GRANDEUR</p>
+            <h1>SRI INFINITY CONVENTION HALL</h1>
+            <p class="address">Manikonda, Hyderabad</p>
+        </div>
+    </section>
 
-        <section id="features">
-            <div class="container">
-                <h2>Our Features</h2>
-                <div class="feature-grid">
-                    <div class="feature-item fade-in">
-                        <img src="https://images.unsplash.com/photo-1600331006573-0495ae40d705?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJhbGxvb218ZW58MHx8MHx8fDA%3D" alt="Main Hall">
-                        <h3>Main Hall</h3>
-                        <p>A grand space with stunning aesthetics, perfect for large-scale events and celebrations.</p>
-                    </div>
-                    <div class="feature-item fade-in">
-                        <img src="https://images.unsplash.com/photo-1549491740-95563910c663?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBhcmtpbmclMjBsb3R8ZW58MHx8MHx8fDA%3D" alt="Parking">
-                        <h3>Ample Parking</h3>
-                        <p>Secure and spacious parking facilities to ensure a hassle-free experience for all your guests.</p>
-                    </div>
-                    <div class="feature-item fade-in">
-                        <img src="https://images.unsplash.com/photo-1579298245598-e7943d73507d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YmFyJTIwcm9vbXxlbnwwfHwwfHx8MA%3D%3D" alt="Bar Room">
-                        <h3>Exclusive Bar Room</h3>
-                        <p>A stylish and modern bar serving premium beverages in an intimate and sophisticated setting.</p>
-                    </div>
-                    <div class="feature-item fade-in">
-                        <img src="https://images.unsplash.com/photo-1579298245598-e7943d73507d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YmFyJTIwcm9vbXxlbnwwfHwwfHx8MA%3D%3D" alt="Bar Room">
-                        <h3>Exclusive Bar Room</h3>
-                        <p>A stylish and modern bar serving premium beverages in an intimate and sophisticated setting.</p>
-                    </div>
-                    <div class="feature-item fade-in">
-                        <img src="https://images.unsplash.com/photo-1590846467362-e64e5256e297?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGluaW5nJTIwaGFsbHxlbnwwfHwwfHx8MA%3D%3D" alt="Dining">
-                        <h3>Luxurious Dining</h3>
-                        <p>A spacious dining area offering a culinary journey with exquisite menus and exceptional service.</p>
-                    </div>
-                    <div class="feature-item fade-in">
-                        <img src="https://images.unsplash.com/photo-1600331006573-0495ae40d705?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJhbGxvb218ZW58MHx8MHx8fDA%3D" alt="Banquet">
-                        <h3>Banquet Facilities</h3>
-                        <p>Flexible banquet spaces for all occasions, from corporate events to family gatherings.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section id="about" class="section">
+        <div class="about-image hidden">
+            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format&fit=crop" alt="Elegant interior of the convention hall">
+        </div>
+        <div class="about-content hidden">
+            <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">About Us</h2>
+            <h3>Crafting Unforgettable Moments</h3>
+            <p>Welcome to Sri Infinity, the pinnacle of luxury and elegance in Hyderabad. Nestled in the heart of Manikonda, we are more than just a venue; we are the canvas for your most cherished memories. Our mission is to transform your events into timeless celebrations.</p>
+            <p>From grand weddings to corporate galas, our state-of-the-art facilities, meticulous attention to detail, and unparalleled service ensure every occasion is a seamless and spectacular success. At Sri Infinity, your vision is our command.</p>
+        </div>
+    </section>
 
-        <section id="about" class="about-section">
-            <div class="container">
-                <div class="about-content">
-                    <div class="about-text slide-in-left">
-                        <h2>About Us</h2>
-                        <p>Located in the heart of Manikonda, Hyderabad, SRI INFINITY CONVENTION HALL is a state-of-the-art venue designed to host the most memorable events. We blend modern elegance with traditional hospitality to create an experience that is truly second to none. Our dedicated team is committed to making your vision a reality, ensuring every detail is perfect.</p>
-                        <p>From lavish weddings and corporate seminars to intimate parties, our versatile spaces and world-class amenities cater to all your needs. With our stunning architecture and a focus on impeccable service, we are not just a venue; we are the beginning of beautiful memories.</p>
-                    </div>
-                    <div class="about-image slide-in-right">
-                        <img src="https://images.unsplash.com/photo-1520695034638-70144d88e404?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNvbnZlbnRpb24lMjBoYWxsfGVufDB8fDB8fHww" alt="About Sri Infinity">
-                    </div>
-                </div>
+    <section id="features" class="section">
+        <h2 class="section-title">Our Exquisite Features</h2>
+        <div class="features-grid">
+            <div class="feature-card hidden" id="feature-main-hall">
+                <img src="https://images.unsplash.com/photo-1587899763319-3c7acc50b828?q=80&w=2070&auto=format&fit=crop" alt="Grand Main Hall">
+                <h3>Main Hall</h3>
+                <p>A majestic, pillar-less hall with soaring ceilings and customizable ambient lighting, designed to host the grandest of celebrations and corporate events.</p>
             </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section contact-info">
-                    <h3>Contact Us</h3>
-                    <p>SRI INFINITY CONVENTION HALL</p>
-                    <p>Manikonda, Hyderabad</p>
-                    <p>Email: info@sriinfinity.com</p>
-                    <p>Phone: +91 98765 43210</p>
-                </div>
-                <div class="footer-section quick-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#contact">Book Now</a></li>
-                    </ul>
-                </div>
+            <div class="feature-card hidden" id="feature-parking">
+                <img src="https://images.unsplash.com/photo-1580649795258-a82f34273891?q=80&w=1974&auto=format&fit=crop" alt="Spacious Parking Area">
+                <h3>Ample Parking</h3>
+                <p>Extensive, secure parking space with valet services, ensuring convenience and a hassle-free arrival for all your distinguished guests.</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 SRI INFINITY CONVENTION HALL. All Rights Reserved.</p>
+            <div class="feature-card hidden" id="feature-bar">
+                <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1974&auto=format&fit=crop" alt="Stylish Bar Room">
+                <h3>Chic Bar Room</h3>
+                <p>A sophisticated, fully-stocked bar with contemporary decor. The perfect setting for your guests to mingle and enjoy exquisite cocktails.</p>
+            </div>
+            <div class="feature-card hidden" id="feature-dining">
+                <img src="https://images.unsplash.com/photo-1623634288035-1886b465b4c1?q=80&w=1964&auto=format&fit=crop" alt="Elegant Dining Area">
+                <h3>Elegant Dining</h3>
+                <p>A dedicated, opulent dining area that offers a world-class culinary experience, with customizable menus crafted by our expert chefs.</p>
+            </div>
+            <div class="feature-card hidden" id="feature-banquet">
+                <img src="https://images.unsplash.com/photo-1594951926212-1f4f9573f4e3?q=80&w=1964&auto=format&fit=crop" alt="Luxurious Banquet Setup">
+                <h3>Lush Banquet</h3>
+                <p>Perfect for more intimate gatherings or pre-function events, our banquet spaces offer versatile arrangements and luxurious decor.</p>
             </div>
         </div>
-    </footer>
+    </section>
+    
+    <section id="gallery" class="section">
+        <h2 class="section-title">A Glimpse of Infinity</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item hidden"><img src="https://images.pexels.com/photos/2263436/pexels-photo-2263436.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Wedding setup"></div>
+            <div class="gallery-item hidden"><img src="https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Corporate event"></div>
+            <div class="gallery-item hidden"><img src="https://images.pexels.com/photos/1305763/pexels-photo-1305763.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Table setting"></div>
+            <div class="gallery-item hidden"><img src="https://images.pexels.com/photos/265906/pexels-photo-265906.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Dining detail"></div>
+            <div class="gallery-item hidden"><img src="https://images.pexels.com/photos/1487673/pexels-photo-1487673.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Exterior view"></div>
+            <div class="gallery-item hidden"><img src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Lobby area"></div>
+        </div>
+    </section>
 
-    <div class="chat-button">
-        <span>Chat Now</span>
+    <footer id="contact" class="footer">
+        <div class="footer-logo">SRI INFINITY</div>
+        <p>Manikonda, Hyderabad, Telangana, 500089</p>
+        <p>For Bookings & Inquiries: <a href="tel:+910000000000" style="color:var(--gold); text-decoration: none;">+91 000 000 0000</a> | <a href="mailto:contact@sriinfinity.com" style="color:var(--gold); text-decoration: none;">contact@sriinfinity.com</a></p>
+        <div class="copyright">
+            &copy; 2025 Sri Infinity Convention Hall. All Rights Reserved. Designed with ❤️.
+        </div>
+    </footer>
+    
+    <div class="chat-sticky-button" onclick="alert('Chat feature coming soon!');">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21 6.579C21 8.468 19.468 10 17.579 10H17V12C17 13.657 15.657 15 14 15H8.421C6.532 15 5 16.532 5 18.421V21H3V18.421C3 15.438 5.438 13 8.421 13H14C14.552 13 15 12.552 15 12V10H17.579C20.562 10 23 7.562 23 4.579C23 1.596 20.562 -0.842 17.579 2.141L21 6.579ZM19 3H11.579C9.69 3 8.157 4.532 8.157 6.421V8H11C12.657 8 14 6.657 14 5V3H19Z"/>
+        </svg>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // JavaScript for smooth scroll-triggered animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    // Optional: remove class to re-animate on scroll up
+                    // entry.target.classList.remove('show');
+                }
+            });
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+    </script>
+
 </body>
 </html>
