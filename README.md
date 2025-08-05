@@ -1,21 +1,18 @@
-# About General Relativity
+# SRI INFINITY CONVENTION HALL
 
-This is a pure HTML/CSS/JavaScript-based project to explain and visualize the key aspects of General Relativity.
+A modern website built using **HTML**, **CSS**, and **JavaScript** for a beautiful and professional convention hall located in **Manikonda, Hyderabad**.
 
-## 🧪 Features
+## Features
 
-- Introductory explanation of General Relativity
-- Sections on its history and reformations
-- Interactive canvas visualization of spacetime curvature
+- Smooth navigation
+- Modern responsive layout
+- Elegant service cards for:
+  - Banquet Hall
+  - Bar Room
+  - Dining
+  - Main Mall
+- Contact section for quick reach
+- Fully customizable
 
-## 🛠 Technologies Used
+## Folder Structure
 
-- HTML5
-- CSS3
-- Vanilla JavaScript (Canvas API)
-
-## 🚀 How to Run
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/about-general-relativity.git
