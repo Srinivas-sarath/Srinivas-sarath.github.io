@@ -1,44 +1,23 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
+const canvas = document.getElementById('gravityCanvas');
+const ctx = canvas.getContext('2d');
 
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
+canvas.width = canvas.offsetWidth;
+canvas.height = 400;
 
-    // Fade-in animation on scroll
-    const faders = document.querySelectorAll('.fade-in');
-    const slidersLeft = document.querySelectorAll('.slide-in-left');
-    const slidersRight = document.querySelectorAll('.slide-in-right');
+function drawGrid() {
+  const spacing = 40;
+  ctx.strokeStyle = '#555';
+  for (let x = 0; x < canvas.width; x += spacing) {
+    for (let y = 0; y < canvas.height; y += spacing) {
+      let dx = x - canvas.width / 2;
+      let dy = y - canvas.height / 2;
+      let distance = Math.sqrt(dx * dx + dy * dy);
+      let distortion = 50 * Math.exp(-distance * 0.01);
+      ctx.beginPath();
+      ctx.arc(x, y + distortion, 1, 0, 2 * Math.PI);
+      ctx.stroke();
+    }
+  }
+}
 
-    const appearOptions = {
-        threshold: 0.5,
-        rootMargin: "0px 0px -100px 0px"
-    };
-
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
-            }
-            entry.target.classList.add('appear');
-            observer.unobserve(entry.target);
-        });
-    }, appearOptions);
-
-    faders.forEach(fader => {
-        appearOnScroll.observe(fader);
-    });
-
-    slidersLeft.forEach(slider => {
-        appearOnScroll.observe(slider);
-    });
-
-    slidersRight.forEach(slider => {
-        appearOnScroll.observe(slider);
-    });
-});
+drawGrid();
